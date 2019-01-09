@@ -33,7 +33,7 @@ In this coding challenge, the dataset recorded various features of potential can
 
 ## Results:
 
-The results of the confusion matrix show that there is potential for more tweaks in tuning hyper-parameters and/or preprocessing the data. One take away from these results is that with less exmaples of "1" class we can see it effecting the precision in classifying the unlabeled data. There
+The results of the confusion matrix show that there is potential for more tweaks in tuning hyper-parameters and/or preprocessing the data. One take away from these results is that with less examples of "1" class we can see it effecting the precision in classifying the unlabeled data. Therefore, more work on tuning parameters, feature selecting, gathering more data on class "1" or having the same number of instances for both classes could help in improving results. 
 
 ## Confusion Matrix:
 
