@@ -11,7 +11,8 @@ In this coding challenge, the dataset recorded various features of potential can
     3. Since the labeled data did not have an even representation for each class (about 50% more "0" than "1"). I balanced the class weights in the model such that the
     "1" labeled entries were weighted proportional to its frequency in samples. Hence "SVC(class_weight='balanced')"
 
-    ### Additional work:
+    Additional work:
+    
         From the results, we can see there can be further actions taken from more accuracy. One thing I would like to have tried is creating a subset of the data such that there is
         and equal representation of both classes. Another thing I would have liked to run a feature selection method to determine the importance of features. From a high level, I have a
         feeling some of these features had very little importance to the decision making process.
@@ -24,7 +25,7 @@ In this coding challenge, the dataset recorded various features of potential can
 
     When first running the model without balancing the class weights, all test entries were classified as "0". This made me question the overlap, non-linear separation between the two classes. Due to that, I went forward with using an Radial Basis Function (RBF) as my kernel method. In general, RBF is commonly used with SVM's and non-linear data due to its adaptiveness to noise. Resulting in softening the margin accordingly.
 
-    ### Additional Work:
+    Additional Work:
 
         1. I would like to tuning the class weights to find the best results. A form of back propagation where an error rate based on accuracy of results determines the tuning of the class weights. Other parameters worth trying to tune is the gamma parameter which represents the kernel coefficient. The gamma parameter defaulted to 1/num_features.  
 
