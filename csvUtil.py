@@ -1,7 +1,6 @@
 import csv
 import numpy as np
-import copy
-
+import pandas as pd
 
 NUM_ENTRIES = 35644
 NUM_TRAIN_ENTRIES = 3218
@@ -11,8 +10,9 @@ NUM_FEATURES_AND_LABEL = 20
 
 class csvUtil:
 
-    def __init__(self, file):
-        self.file = file
+    def __init__(self, fileIn, fileOut):
+        self.fileIn = fileIn
+        self.fileOut = fileOut
         self.label_set = np.zeros((NUM_TRAIN_ENTRIES, NUM_FEATURES_AND_LABEL))
         self.unlabel_set = np.zeros((NUM_TEST_ENTRIES, NUM_FEATURES_AND_LABEL))
 
@@ -31,13 +31,13 @@ class csvUtil:
             ind += 1
         return temp
 
-
+    # Reads the data file and stores into two datasets {Label & Unlabeled}
     def readAndStore(self):
 
         train_index = 0
         test_index = 0
 
-        with open(self.file) as csv_file:
+        with open(self.fileIn) as csv_file:
             csv_reader = csv.reader(csv_file, delimiter=',')
             line_count = 0
             for row in csv_reader:
@@ -54,11 +54,17 @@ class csvUtil:
                         test_index += 1
                 line_count += 1
 
+    # getter of Labeled dataset
     def getLabelSet(self):
         return self.label_set
 
+    #getter of unlabeled dataset
     def getUnLabelSet(self):
         return self.unlabel_set
 
-    # def writeCSV(self, filename, label, set):
-    # 
+    # Writes solution to CSV
+    def writeCSV(self, label, set):
+
+        df = pd.DataFrame(list(zip(*[label, set[:,1]])), columns=['Class Label', 'ID'])
+
+        df.to_csv(self.fileOut, index=True)
